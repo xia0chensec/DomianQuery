@@ -52,7 +52,7 @@ def query_domain_info(domain,output_file=None):
                     print(result, end=" ")
                     print("\033[0m")
 
-                    # 返回结果数据
+                    # 返回结果
             return result_data
         
 
