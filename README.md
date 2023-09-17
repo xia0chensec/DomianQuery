@@ -28,18 +28,16 @@ options:
 单个域名查询权重
 python .\DomainQuery.py -u baidu.com
 ```
-
-
+![image](https://github.com/xla0Chen/DomianQuery/assets/145250613/7b672713-50c2-404e-ad93-7d77fd1c45ab)
 
 ```
 单个IP反查域名
 python .\DomainQuery.py -u 222.215.172.58
 ```
-
-
+![image](https://github.com/xla0Chen/DomianQuery/assets/145250613/65f229fa-d6eb-4cfd-b332-c9b1eb3f4566)
 
 ```
 批量查询
 python .\DomainQuery.py -f domain.txt
 ```
-
+![image](https://github.com/xla0Chen/DomianQuery/assets/145250613/b8fc6eac-8ba6-475c-b716-50a6d2b823da)
