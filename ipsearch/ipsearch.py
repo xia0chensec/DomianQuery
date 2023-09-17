@@ -7,45 +7,7 @@ import requests
 from module.baidu import query_domain_info
 import time
 
-# def query_ip_info(ipaddress, output_file):
-#     # 构建API请求URL
-#     url = f'https://api.webscan.cc/?action=query&ip={ipaddress}'
-#
-#     try:
-#         # 发送API请求
-#         response = requests.get(url, timeout=3)
-#         response.raise_for_status()  # 检查响应状态
-#
-#         # 解析JSON响应
-#         data = json.loads(response.text)
-#
-#         if "null" in response.text:
-#             print(f"IP->[{ipaddress}]未反查到域名")
-#         else:
-#             domain_values = [item['domain'] for item in data]
-#             # 打印提取出的值
-#             domain = domain_values[0]
-#             print("\033[0m")
-#             print(f"IP->[{ipaddress}]反查到的域名为: {domain}")
-#
-#             # 查询域名权重并打印结果
-#             # domain_info = query_domain_info(domain)
-#             # if output_file:
-#             #     query_domain_info(domain, output_file='result.txt')
-#             #print(f"调用 query_domain_info 函数，输出文件为: {output_file}")
-#             domain_info = query_domain_info(domain, output_file=output_file)
-#             #print(f"query_domain_info 函数返回结果: {domain_info}")
-#             # if domain_info and output_file:
-#             #     with open(output_file, 'a') as file:
-#             #         for result in domain_info:
-#             #             file.write(result + "\n")
-#
-#     except requests.exceptions.RequestException as e:
-#         print(f"请求出错: {e}")
-#     except json.JSONDecodeError as e:
-#         print(f"JSON解析错误: {e}")
-#     except Exception as e:
-#         print(f"发生未知错误: {e}")
+
 def query_ip_info(ipaddress, output_file):
     mainDomainNameList = []
 
