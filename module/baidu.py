@@ -4,6 +4,7 @@
 import json
 import requests
 import time
+import re
 
 def query_domain_info(domain,output_file=None):
     # 构建API请求URL
@@ -16,7 +17,6 @@ def query_domain_info(domain,output_file=None):
 
         # 解析JSON响应
         data = json.loads(response.text)
-#print(data)
         success_data = data["data"]["success"]
         result_data = []
         if output_file:
@@ -26,9 +26,8 @@ def query_domain_info(domain,output_file=None):
                     pc_br = item["pc_br"]
                     m_br = item["m_br"]
                     if pc_br > 0 or m_br > 0:
-                        print("\033[31m")
                         result_line = f"域名: {domain} 百度权重: {pc_br} 百度移动权重: {m_br}\n"
-                        print(result_line, end=" ")
+                        print("\033[31m"+result_line, end=" ")
                         f.write(result_line)
                         result_data.append(result_line)
                         print("\033[0m")
@@ -36,6 +35,7 @@ def query_domain_info(domain,output_file=None):
                     else:
                         result = f"域名: {domain} 百度权重: {pc_br} 百度移动权重: {m_br}\n"
                         print(result, end=" ")
+                        print("\033[0m")
         else:
             for item in success_data:
                 domain = item["domain"]
@@ -52,10 +52,9 @@ def query_domain_info(domain,output_file=None):
                     print(result, end=" ")
                     print("\033[0m")
 
-                    # 返回结果
+                    # 返回结果数据
             return result_data
-        
-
+        time.sleep(2)   #延时，降低请求频率
 
     except requests.exceptions.RequestException as e:
         print(f"查询域名 {domain} 时发生异常:", e)
@@ -65,5 +64,4 @@ def query_domain_info(domain,output_file=None):
 
     except json.JSONDecodeError as e:
         print(f"解析域名 {domain} 的JSON数据时发生错误:", e)
-
     return []
